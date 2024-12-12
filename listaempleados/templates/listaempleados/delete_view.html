@@ -1,0 +1,12 @@
+{% extends 'listaempleados/list_view.html' %}
+
+{% block content %}
+<h2> Eliminar trabajador </h2>
+<form method="post">
+    {% csrf_token %}
+
+    <p>¿Desea eliminar este trabajador?</p>
+
+    <button class="btn btn-danger" type="submit">Eliminar</button>
+</form>
+{% endblock %}

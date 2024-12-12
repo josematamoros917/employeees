@@ -1,0 +1,21 @@
+{% extends 'listaempleados/base.html' %}
+
+{% block content %}
+<h2>Actualizar Trabajador</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <!-- Mostrar la imagen actual si existe -->
+    {% if form.instance.image %}
+        <div>
+            <p>Imagen actual:</p>
+            <img src="{{ form.instance.image.url }}" alt="Imagen del trabajador" style="width: 350px; height: 300px;">
+        </div>
+    {% endif %}
+
+    <button class="btn btn-warning" type="submit">Actualizar</button>
+</form>
+
+{% endblock %}

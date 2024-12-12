@@ -1,0 +1,41 @@
+{% extends 'listaempleados/base.html' %}
+
+{% block content %}
+<div class="content">
+    <h2>Datos Personales</h2>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <th>RUT</th>
+                    <td>{{ trabajador.rut }}</td>
+                </tr>
+                <tr>
+                    <th>Nombre</th>
+                    <td>{{ trabajador.nombre }} {{ trabajador.apellido }}</td>
+                </tr>
+                <tr>
+                    <th>Sexo</th>
+                    <td>{{ trabajador.sexo }}</td>
+                </tr>
+                <tr>
+                    <th>Dirección</th>
+                    <td>{{ trabajador.direccion }}</td>
+                </tr>
+                <tr>
+                    <th>Teléfono</th>
+                    <td>{{ trabajador.telefono }}</td>
+                </tr>
+                <tr>
+                    <th>Correo Electrónico</th>
+                    <td>{{ trabajador.correo }}</td>
+                </tr>
+                <tr>
+                    <th>Cargo</th>
+                    <td>{{ trabajador.cargo }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
