@@ -1,0 +1,29 @@
+{% extends 'listaempleados/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Bienvenido, {{ user.get_full_name|default:user.username }}</h1>
+    <p class="text-center">Has iniciado sesión en el sistema. Aquí puedes gestionar tu cuenta.</p>
+
+    <!-- Opciones principales -->
+    <div class="row mt-4 justify-content-center">
+        <div class="col-md-4 text-center">
+            <a href="{% url 'update' trabajador.rut %}" class="btn btn-primary btn-block">
+                <i class="fas fa-user-edit"></i> Editar Perfil
+            </a>
+        </div>
+        <div class="col-md-4 text-center">
+            <a href="#" class="btn btn-warning btn-block">
+                <i class="fas fa-key"></i> Cambiar Contraseña
+            </a>
+        </div>
+    </div>
+
+    <!-- Información del sistema -->
+    <div class="mt-5 text-center">
+        <h3>Información del sistema</h3>
+        <p>Versión del sistema: 1.0.0</p>
+        <p>Último inicio de sesión: {{ user.last_login|date:"d/m/Y H:i" }}</p>
+    </div>
+</div>
+{% endblock %}

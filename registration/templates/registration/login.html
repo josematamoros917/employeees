@@ -16,7 +16,7 @@
         {% if form.non_field_errors %}
         <p class="text-danger">User and Password not match, try again.</p>
         {% endif %}
-        <p><a style="text-decoration: none" href="{% url 'signup' %}">Create account here!</a></p>
+        
         <input type="submit" class="btn btn-success" value="Login">
         <a href="{% url 'list' %}" class="btn btn-dark">Back</a>
 </div>

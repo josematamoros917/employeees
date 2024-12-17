@@ -16,17 +16,24 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic.base import RedirectView
 from django.conf import settings
-from django.shortcuts import redirect
+from django.conf.urls.static import static
 
 urlpatterns = [
-    path('listaempleados/', include('listaempleados.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('accounts/', include('registration.urls')),
-    path('admin/', admin.site.urls),path('admin/', admin.site.urls),
-    # path('', lambda request: redirect('listaempleados/')),
+    # Ruta hacia listaempleados
+    path('', include('listaempleados.urls')),
+    
+    # Rutas relacionadas con el sistema de autenticación
+    path('accounts/', include('registration.urls')),  # Primero las rutas de registro personalizadas
+    path('accounts/', include('django.contrib.auth.urls')),  # Luego las rutas predeterminadas de Django
+
+    # Redirige de `accounts/profile/` a la página de inicio
+    path('accounts/profile/', RedirectView.as_view(url='/')),
+
+    # Ruta al panel de administrador
+    path('admin/', admin.site.urls),
 ]
 
 if settings.DEBUG:
-    from django.conf.urls.static import static
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
